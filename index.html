@@ -6,7 +6,7 @@
   <title>Firework Japan FY26 Q3 OffSite - 準備概要</title>
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:title" content="Firework Japan FY26 Q3 OffSite - 準備概要">
-  <meta property="og:description" content="2026.07.17(Fri) 開催。全体リード・総括ビジネス・ワークショップ/ディスカッション・Claudeワークショップの4パート体制と準備ロードマップ。">
+  <meta property="og:description" content="2026.07.17(Fri) 11:00-18:45開催。本番アジェンダ確定・Revenue Growthワークショップ・Claudeワークショップの4パート体制。">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9A%80</text></svg>">
   <style>
@@ -18,11 +18,86 @@
       box-sizing: border-box;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Noto Sans JP', sans-serif;
       background: #f5f0eb;
       color: #1a1a1a;
       line-height: 1.8;
+      padding-left: 220px;
+    }
+
+    /* ===== SIDEBAR NAV（スクロールスパイ） ===== */
+    .hero, .section { scroll-margin-top: 16px; }
+
+    .sidenav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 220px;
+      background: #13132a;
+      color: #cdd3e0;
+      padding: 22px 14px;
+      overflow-y: auto;
+      z-index: 60;
+      border-right: 1px solid #23233f;
+    }
+
+    .sidenav .brand {
+      font-size: 0.84rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      line-height: 1.32;
+    }
+
+    .sidenav .brand .em { color: #ff6b35; }
+
+    .sidenav .sub2 {
+      font-size: 0.62rem;
+      color: #7b84a0;
+      margin: 5px 0 18px;
+    }
+
+    .sidenav a {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      color: #aeb6cc;
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .sidenav a:hover { background: #1e1e3a; color: #ffffff; }
+
+    .sidenav a.active {
+      background: #1e1e3a;
+      color: #ffffff;
+      border-left-color: #ff6b35;
+      font-weight: 700;
+    }
+
+    .sidenav .num {
+      color: #6c7596;
+      font-size: 0.66rem;
+      flex: 0 0 16px;
+    }
+
+    .sidenav .foot {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid #23233f;
+      font-size: 0.6rem;
+      color: #5f6884;
+      line-height: 1.6;
     }
 
     /* ===== HERO ===== */
@@ -327,53 +402,92 @@
       margin-top: 4px;
     }
 
-    /* ===== PREV AGENDA (compact table) ===== */
-    .prev-agenda-table {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    .prev-agenda-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .prev-agenda-table th {
-      text-align: left;
+    /* ===== TIMETABLE（Q2 OffSiteデザイン踏襲） ===== */
+    .tt-header {
+      display: grid;
+      grid-template-columns: 150px 1fr 120px 60px;
+      padding: 12px 24px;
       font-size: 11px;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: #999999;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-bottom: 2px solid #f0ece6;
+      border-bottom: 1px solid #e8e2d8;
+      margin-bottom: 8px;
     }
 
-    .prev-agenda-table td {
-      font-size: 13px;
-      color: #3a332c;
-      padding: 9px 20px;
-      border-bottom: 1px solid #f0ece6;
+    .tt-header span:nth-child(3) { text-align: center; }
+    .tt-header span:nth-child(4) { text-align: right; }
+
+    .timetable {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .prev-agenda-table tr:last-child td {
-      border-bottom: none;
+    .tt-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 120px 60px;
+      align-items: center;
+      padding: 20px 24px;
+      background: #2d3748;
+      color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(45, 55, 72, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .prev-agenda-table td.pa-time-cell {
-      color: #999999;
-      white-space: nowrap;
+    .tt-row:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(45, 55, 72, 0.35);
+    }
+
+    .tt-row.break-row {
+      background: linear-gradient(135deg, #ff6b35, #ff8f5e);
+      color: #ffffff;
+    }
+
+    .tt-row.lunch-row {
+      background: linear-gradient(135deg, #00a0e0, #40c4ff);
+      color: #ffffff;
+    }
+
+    .tt-time {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
       font-variant-numeric: tabular-nums;
-      font-size: 12px;
-      width: 100px;
     }
 
-    .prev-agenda-table td.pa-owner-cell {
-      color: #999999;
-      white-space: nowrap;
-      width: 140px;
+    .tt-session {
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .tt-session small {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 4px;
+    }
+
+    .tt-owner {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      text-align: center;
+    }
+
+    .tt-duration {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ff6b35;
+      text-align: right;
+    }
+
+    .break-row .tt-time, .break-row .tt-session, .break-row .tt-owner, .break-row .tt-duration,
+    .lunch-row .tt-time, .lunch-row .tt-session, .lunch-row .tt-owner, .lunch-row .tt-duration {
+      color: rgba(255, 255, 255, 0.95);
     }
 
     /* ===== DIVIDER ===== */
@@ -407,6 +521,42 @@
     }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      body { padding-left: 0; }
+      .hero, .section { scroll-margin-top: 62px; }
+
+      .sidenav {
+        position: sticky;
+        top: 0;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: auto;
+        height: auto;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 10px 12px;
+        border-right: none;
+        border-bottom: 1px solid #23233f;
+        white-space: nowrap;
+      }
+
+      .sidenav .brand, .sidenav .sub2, .sidenav .foot, .sidenav .num { display: none; }
+
+      .sidenav a {
+        flex: 0 0 auto;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 7px 12px;
+        margin: 0;
+        border-radius: 6px;
+      }
+
+      .sidenav a.active { border-left: none; border-bottom-color: #ff6b35; }
+    }
+
     @media (max-width: 768px) {
       .hero-meta {
         flex-direction: column;
@@ -422,10 +572,30 @@
         grid-template-columns: 1fr;
         gap: 6px;
       }
+
+      .tt-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 16px;
+      }
+
+      .tt-header { display: none; }
+
+      .tt-owner, .tt-duration { text-align: left; }
     }
   </style>
 </head>
 <body>
+
+  <!-- SIDEBAR NAV -->
+  <nav class="sidenav">
+    <div class="brand">Firework<span class="em"> Japan</span></div>
+    <div class="sub2">FY26 Q3 OffSite</div>
+    <a href="#agenda"><span class="num">01</span>本番アジェンダ</a>
+    <a href="#roadmap"><span class="num">02</span>準備ロードマップ</a>
+    <a href="#owners"><span class="num">03</span>担当体制</a>
+    <div class="foot">2026.07.17 (Fri)<br>11:00-18:45</div>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
@@ -450,64 +620,109 @@
     </div>
   </section>
 
-  <!-- OWNERS -->
-  <section class="section">
-    <div class="section-label">Ownership</div>
-    <h2 class="section-title">担当体制</h2>
-    <p class="section-desc">今回も各メンバー持ち回りでオーナーを決定。Kazuki-sanとの相談のうえ、以下4パートの体制で進行します。</p>
+  <!-- Q3 CONFIRMED AGENDA -->
+  <section class="section" id="agenda">
+    <div class="section-label">Confirmed</div>
+    <h2 class="section-title">Q3 OffSite 本番アジェンダ（確定）</h2>
 
-    <div class="owner-grid">
-      <div class="owner-card">
-        <div class="card-number">01</div>
-        <div class="card-role">Part 1</div>
-        <div class="card-title">全体リード</div>
-        <div class="card-owner">&#128100; Issy</div>
-        <div class="card-desc">
-          <ul>
-            <li>オフサイト全体の進行・運営を統括</li>
-          </ul>
-        </div>
+    <div class="tt-header">
+      <span>Time</span>
+      <span>Session</span>
+      <span>Owner</span>
+      <span>Min</span>
+    </div>
+
+    <div class="timetable">
+      <div class="tt-row">
+        <div class="tt-time">11:00 - 11:05</div>
+        <div class="tt-session">Opening</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">5m</div>
       </div>
 
-      <div class="owner-card">
-        <div class="card-number">02</div>
-        <div class="card-role">Part 2</div>
-        <div class="card-title">総括・ビジネスパート</div>
-        <div class="card-owner">&#128100; Kazuki</div>
-        <div class="card-desc">
-          <ul>
-            <li>Q2振り返り、Q3戦略方針の共有</li>
-          </ul>
+      <div class="tt-row">
+        <div class="tt-time">11:05 - 12:05</div>
+        <div class="tt-session">
+          四半期振り返り＆次期戦略方針
+          <small>Q2振り返り・Q3戦略方針の共有</small>
         </div>
+        <div class="tt-owner">Kazuki</div>
+        <div class="tt-duration">60m</div>
       </div>
 
-      <div class="owner-card">
-        <div class="card-number">03</div>
-        <div class="card-role">Part 3</div>
-        <div class="card-title">Revenue Growthワークショップ</div>
-        <div class="card-owner">&#128100; Midori</div>
-        <div class="card-desc">
-          <ul>
-            <li>Growth（前半）＆Retention（後半）: エンタープライズのARR未達要因を発散→収束で整理</li>
-            <li>前半60分＋休憩・AI整理20分＋後半70分の計150分で実施</li>
-            <li>前半冒頭10分はMissyがQ2 Pre-Mortemの進捗を共有</li>
-          </ul>
-        </div>
-        <div class="card-note">7/6骨子すり合わせで内容確定。名称は「Revenue Growthワークショップ」（旧称Pre-Mortem）。事前準備なしのブレスト形式（発言録音→Claudeで整理）で進行。</div>
+      <div class="tt-row lunch-row">
+        <div class="tt-time">12:05 - 12:50</div>
+        <div class="tt-session">昼休憩</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">45m</div>
       </div>
 
-      <div class="owner-card">
-        <div class="card-number">04</div>
-        <div class="card-role">Part 4</div>
-        <div class="card-title">Claudeワークショップ</div>
-        <div class="card-owner">&#128100; Nobu</div>
-        <div class="card-desc">
-          <ul>
-            <li>Claudeを使ったツール構築＆発表（180分・実戦アウトプット重視）</li>
-            <li>業界別2〜3チームに分かれ「その業界のトップ」レベルの提案を制作</li>
-          </ul>
+      <div class="tt-row">
+        <div class="tt-time">12:50 - 13:00</div>
+        <div class="tt-session">
+          Pre-Mortem進捗共有（Q2分）
+          <small>Q2 Pre-Mortemで洗い出した課題の対応状況を確認</small>
         </div>
-        <div class="card-note">詳細（プロセス・評価基準・発表枠配分）は7/12までにドキュメント化予定。</div>
+        <div class="tt-owner">Missy</div>
+        <div class="tt-duration">10m</div>
+      </div>
+
+      <div class="tt-row">
+        <div class="tt-time">13:00 - 14:10</div>
+        <div class="tt-session">
+          Revenue Growthワークショップ（前半：Growth）
+          <small>なぜ新規・アップセルでARRを伸ばせないのかを発散</small>
+        </div>
+        <div class="tt-owner">Midori</div>
+        <div class="tt-duration">70m</div>
+      </div>
+
+      <div class="tt-row break-row">
+        <div class="tt-time">14:10 - 14:30</div>
+        <div class="tt-session">休憩＆AI整理</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">20m</div>
+      </div>
+
+      <div class="tt-row">
+        <div class="tt-time">14:30 - 15:30</div>
+        <div class="tt-session">
+          Revenue Growthワークショップ（後半：Retention）
+          <small>解約・非更新リスクを洗い出し対策を策定</small>
+        </div>
+        <div class="tt-owner">Midori</div>
+        <div class="tt-duration">60m</div>
+      </div>
+
+      <div class="tt-row break-row">
+        <div class="tt-time">15:30 - 15:40</div>
+        <div class="tt-session">休憩</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">10m</div>
+      </div>
+
+      <div class="tt-row">
+        <div class="tt-time">15:40 - 18:40</div>
+        <div class="tt-session">
+          Claudeを使ったツール構築＆発表
+          <small>業界別チームで実戦アウトプットを制作・発表</small>
+        </div>
+        <div class="tt-owner">Nobu</div>
+        <div class="tt-duration">180m</div>
+      </div>
+
+      <div class="tt-row">
+        <div class="tt-time">18:40 - 18:45</div>
+        <div class="tt-session">Closing</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">5m</div>
+      </div>
+
+      <div class="tt-row lunch-row">
+        <div class="tt-time">19:00 ~</div>
+        <div class="tt-session">懇親会</div>
+        <div class="tt-owner">-</div>
+        <div class="tt-duration">-</div>
       </div>
     </div>
   </section>
@@ -515,7 +730,7 @@
   <div class="divider"></div>
 
   <!-- ROADMAP -->
-  <section class="section">
+  <section class="section" id="roadmap">
     <div class="section-label">Next Actions</div>
     <h2 class="section-title">準備ロードマップ</h2>
     <p class="section-desc">本番までのマイルストーン。各オーナーはこのスケジュールに沿って準備を進めてください。</p>
@@ -525,7 +740,7 @@
         <div class="rm-date">7/2 - 7/6</div>
         <div class="rm-task">
           骨子すり合わせ ✓完了
-          <small>7/6実施。四半期振り返り・Pre-Mortem・目安箱・Claudeワークショップの具体アジェンダを確定</small>
+          <small>7/6実施。四半期振り返り・Revenue Growthワークショップ・Claudeワークショップの具体アジェンダを確定</small>
         </div>
       </div>
 
@@ -565,58 +780,65 @@
 
   <div class="divider"></div>
 
-  <!-- Q3 CONFIRMED AGENDA -->
-  <section class="section">
-    <div class="section-label">Confirmed</div>
-    <h2 class="section-title">Q3 OffSite 本番アジェンダ（確定）</h2>
-    <p class="section-desc">7/6骨子すり合わせで確定（7/6修正反映）。昼休憩45分・ワークショップ間休憩20分＋10分を確保したタイムテーブル。</p>
+  <!-- OWNERS -->
+  <section class="section" id="owners">
+    <div class="section-label">Ownership</div>
+    <h2 class="section-title">担当体制</h2>
+    <p class="section-desc">今回も各メンバー持ち回りでオーナーを決定。Kazuki-sanとの相談のうえ、以下4パートの体制で進行します。</p>
 
-    <div class="prev-agenda-table">
-      <table>
-        <thead>
-          <tr><th>Time</th><th>Session</th><th>Owner</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="pa-time-cell">11:00-11:05</td><td>Opening</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">11:05-12:05</td><td>四半期振り返り＆次期戦略方針（Q2振り返り・Q3戦略方針）</td><td class="pa-owner-cell">Kazuki</td></tr>
-          <tr><td class="pa-time-cell">12:05-12:50</td><td>昼休憩</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">12:50-13:00</td><td>Pre-Mortem進捗共有（Q2分）</td><td class="pa-owner-cell">Missy</td></tr>
-          <tr><td class="pa-time-cell">13:00-14:00</td><td>Revenue Growthワークショップ（前半：Growth）</td><td class="pa-owner-cell">Midori</td></tr>
-          <tr><td class="pa-time-cell">14:00-14:20</td><td>休憩＆AI整理</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">14:20-15:30</td><td>Revenue Growthワークショップ（後半：Retention）</td><td class="pa-owner-cell">Midori</td></tr>
-          <tr><td class="pa-time-cell">15:30-15:40</td><td>休憩</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">15:40-18:40</td><td>Claudeを使ったツール構築＆発表</td><td class="pa-owner-cell">Nobu</td></tr>
-          <tr><td class="pa-time-cell">18:40-18:45</td><td>Closing</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">19:00~</td><td>懇親会</td><td class="pa-owner-cell">-</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <div class="owner-grid">
+      <div class="owner-card">
+        <div class="card-number">01</div>
+        <div class="card-role">Part 1</div>
+        <div class="card-title">全体リード</div>
+        <div class="card-owner">&#128100; Issy</div>
+        <div class="card-desc">
+          <ul>
+            <li>オフサイト全体の進行・運営を統括</li>
+          </ul>
+        </div>
+      </div>
 
-  <!-- PREV AGENDA -->
-  <section class="section">
-    <div class="section-label">Reference</div>
-    <h2 class="section-title">前回（Q2）のアジェンダ</h2>
-    <p class="section-desc">参考: 前回実施したセッション構成（<a href="https://riderkarubo.github.io/firework-q2-offsite/" target="_blank" rel="noopener">詳細はこちら</a>）</p>
+      <div class="owner-card">
+        <div class="card-number">02</div>
+        <div class="card-role">Part 2</div>
+        <div class="card-title">総括・ビジネスパート</div>
+        <div class="card-owner">&#128100; Kazuki</div>
+        <div class="card-desc">
+          <ul>
+            <li>Q2振り返り、Q3戦略方針の共有</li>
+          </ul>
+        </div>
+      </div>
 
-    <div class="prev-agenda-table">
-      <table>
-        <thead>
-          <tr><th>Time</th><th>Session</th><th>Owner</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="pa-time-cell">11:00-11:10</td><td>Opening</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">11:10-11:25</td><td>Q1振り返り &amp; Q2戦略方針</td><td class="pa-owner-cell">Kazuki/Nobu</td></tr>
-          <tr><td class="pa-time-cell">12:40-13:40</td><td>Pre-Mortem 前半：攻め</td><td class="pa-owner-cell">Toshi</td></tr>
-          <tr><td class="pa-time-cell">13:55-14:55</td><td>Pre-Mortem 後半：守り</td><td class="pa-owner-cell">Toshi</td></tr>
-          <tr><td class="pa-time-cell">15:05-16:05</td><td>目安箱ディスカッション</td><td class="pa-owner-cell">Kazuki/Issy</td></tr>
-          <tr><td class="pa-time-cell">16:15-16:35</td><td>Claudeおさらい &amp; 活用事例シェア</td><td class="pa-owner-cell">Issy/Kazuki</td></tr>
-          <tr><td class="pa-time-cell">16:35-17:35</td><td>Claudeを使ったツール構築</td><td class="pa-owner-cell">Nobu</td></tr>
-          <tr><td class="pa-time-cell">17:35-18:35</td><td>課題解決ツール構築 &amp; 発表</td><td class="pa-owner-cell">Nobu</td></tr>
-          <tr><td class="pa-time-cell">18:35-18:45</td><td>Closing</td><td class="pa-owner-cell">-</td></tr>
-          <tr><td class="pa-time-cell">19:00~</td><td>懇親会</td><td class="pa-owner-cell">-</td></tr>
-        </tbody>
-      </table>
+      <div class="owner-card">
+        <div class="card-number">03</div>
+        <div class="card-role">Part 3</div>
+        <div class="card-title">Revenue Growthワークショップ</div>
+        <div class="card-owner">&#128100; Midori</div>
+        <div class="card-desc">
+          <ul>
+            <li>Growth（前半）＆Retention（後半）: エンタープライズのARR未達要因を発散→収束で整理</li>
+            <li>前半70分＋休憩・AI整理20分＋後半60分の計150分で実施</li>
+            <li>前半冒頭10分はMissyがQ2 Pre-Mortemの進捗を共有</li>
+          </ul>
+        </div>
+        <div class="card-note">7/6骨子すり合わせで内容確定。名称は「Revenue Growthワークショップ」（旧称Pre-Mortem）。事前準備なしのブレスト形式（発言録音→Claudeで整理）で進行。</div>
+      </div>
+
+      <div class="owner-card">
+        <div class="card-number">04</div>
+        <div class="card-role">Part 4</div>
+        <div class="card-title">Claudeワークショップ</div>
+        <div class="card-owner">&#128100; Nobu</div>
+        <div class="card-desc">
+          <ul>
+            <li>Claudeを使ったツール構築＆発表（180分・実戦アウトプット重視）</li>
+            <li>業界別2〜3チームに分かれ「その業界のトップ」レベルの提案を制作</li>
+          </ul>
+        </div>
+        <div class="card-note">詳細（プロセス・評価基準・発表枠配分）は7/12までにドキュメント化予定。</div>
+      </div>
     </div>
   </section>
 
@@ -624,8 +846,42 @@
   <footer class="footer">
     <div class="footer-logo">Firework</div>
     <p>FY26 Q3 OffSite - 準備概要</p>
-    <p class="footer-updated">最終更新: 2026年7月6日 15:39</p>
+    <p class="footer-updated">最終更新: 2026年7月6日 15:56</p>
   </footer>
+
+  <script>
+    (function () {
+      var links = [].slice.call(document.querySelectorAll('.sidenav a'));
+      var map = links
+        .map(function (a) { return { a: a, el: document.getElementById(a.getAttribute('href').slice(1)) }; })
+        .filter(function (x) { return x.el; });
+      if (!map.length) return;
+
+      var raf = 0;
+      function compute() {
+        raf = 0;
+        var y = window.pageYOffset;
+        var nearBottom = y + window.innerHeight >= document.documentElement.scrollHeight - 8;
+        var cur = map[0];
+        if (nearBottom) {
+          cur = map[map.length - 1];
+        } else {
+          var cursor = y + 90;
+          for (var i = 0; i < map.length; i++) {
+            var top = map[i].el.getBoundingClientRect().top + y;
+            if (top <= cursor) cur = map[i]; else break;
+          }
+        }
+        links.forEach(function (a) { a.classList.remove('active'); });
+        cur.a.classList.add('active');
+      }
+
+      var onScroll = function () { if (!raf) raf = requestAnimationFrame(compute); };
+      compute();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+    })();
+  </script>
 
 </body>
 </html>
