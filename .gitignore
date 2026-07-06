@@ -1,0 +1,6 @@
+.DS_Store
+.claude/
+.omc/
+_削除候補_*/
+_要確認_*/
+node_modules/
