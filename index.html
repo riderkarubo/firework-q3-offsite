@@ -405,7 +405,7 @@
     /* ===== TIMETABLE（Q2 OffSiteデザイン踏襲） ===== */
     .tt-header {
       display: grid;
-      grid-template-columns: 150px 1fr 120px 60px;
+      grid-template-columns: 150px 60px 1fr 120px;
       padding: 12px 24px;
       font-size: 11px;
       letter-spacing: 2px;
@@ -415,8 +415,8 @@
       margin-bottom: 8px;
     }
 
-    .tt-header span:nth-child(3) { text-align: center; }
-    .tt-header span:nth-child(4) { text-align: right; }
+    .tt-header span:nth-child(2) { text-align: center; }
+    .tt-header span:nth-child(4) { text-align: center; }
 
     .timetable {
       display: flex;
@@ -426,7 +426,7 @@
 
     .tt-row {
       display: grid;
-      grid-template-columns: 150px 1fr 120px 60px;
+      grid-template-columns: 150px 60px 1fr 120px;
       align-items: center;
       padding: 20px 24px;
       background: #2d3748;
@@ -482,7 +482,7 @@
       font-size: 14px;
       font-weight: 700;
       color: #ff6b35;
-      text-align: right;
+      text-align: center;
     }
 
     .break-row .tt-time, .break-row .tt-session, .break-row .tt-owner, .break-row .tt-duration,
@@ -627,102 +627,102 @@
 
     <div class="tt-header">
       <span>Time</span>
+      <span>Min</span>
       <span>Session</span>
       <span>Owner</span>
-      <span>Min</span>
     </div>
 
     <div class="timetable">
       <div class="tt-row">
         <div class="tt-time">11:00 - 11:05</div>
+        <div class="tt-duration">5m</div>
         <div class="tt-session">Opening</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">5m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">11:05 - 12:05</div>
+        <div class="tt-duration">60m</div>
         <div class="tt-session">
           四半期振り返り＆次期戦略方針
           <small>Q2振り返り・Q3戦略方針の共有</small>
         </div>
         <div class="tt-owner">Kazuki</div>
-        <div class="tt-duration">60m</div>
       </div>
 
       <div class="tt-row lunch-row">
         <div class="tt-time">12:05 - 12:50</div>
+        <div class="tt-duration">45m</div>
         <div class="tt-session">昼休憩</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">45m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">12:50 - 13:00</div>
+        <div class="tt-duration">10m</div>
         <div class="tt-session">
           Pre-Mortem進捗共有（Q2分）
           <small>Q2 Pre-Mortemで洗い出した課題の対応状況を確認</small>
         </div>
         <div class="tt-owner">Missy</div>
-        <div class="tt-duration">10m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">13:00 - 14:10</div>
+        <div class="tt-duration">70m</div>
         <div class="tt-session">
-          Revenue Growthワークショップ（前半：Growth）
+          Revenue Growthワークショップ（前半）
           <small>なぜ新規・アップセルでARRを伸ばせないのかを発散</small>
         </div>
         <div class="tt-owner">Midori</div>
-        <div class="tt-duration">70m</div>
       </div>
 
       <div class="tt-row break-row">
         <div class="tt-time">14:10 - 14:30</div>
+        <div class="tt-duration">20m</div>
         <div class="tt-session">休憩＆AI整理</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">20m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">14:30 - 15:30</div>
+        <div class="tt-duration">60m</div>
         <div class="tt-session">
-          Revenue Growthワークショップ（後半：Retention）
-          <small>解約・非更新リスクを洗い出し対策を策定</small>
+          Revenue Growthワークショップ（後半）
+          <small>前半うけてアクションを整理</small>
         </div>
         <div class="tt-owner">Midori</div>
-        <div class="tt-duration">60m</div>
       </div>
 
       <div class="tt-row break-row">
         <div class="tt-time">15:30 - 15:40</div>
+        <div class="tt-duration">10m</div>
         <div class="tt-session">休憩</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">10m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">15:40 - 18:40</div>
+        <div class="tt-duration">180m</div>
         <div class="tt-session">
-          Claudeを使ったツール構築＆発表
+          AIGC戦略ワークショップ
           <small>業界別チームで実戦アウトプットを制作・発表</small>
         </div>
         <div class="tt-owner">Nobu</div>
-        <div class="tt-duration">180m</div>
       </div>
 
       <div class="tt-row">
         <div class="tt-time">18:40 - 18:45</div>
+        <div class="tt-duration">5m</div>
         <div class="tt-session">Closing</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">5m</div>
       </div>
 
       <div class="tt-row lunch-row">
         <div class="tt-time">19:00 ~</div>
+        <div class="tt-duration">-</div>
         <div class="tt-session">懇親会</div>
         <div class="tt-owner">-</div>
-        <div class="tt-duration">-</div>
       </div>
     </div>
   </section>
@@ -833,7 +833,7 @@
         <div class="card-owner">&#128100; Nobu</div>
         <div class="card-desc">
           <ul>
-            <li>Claudeを使ったツール構築＆発表（180分・実戦アウトプット重視）</li>
+            <li>AIGC戦略ワークショップ（180分・実戦アウトプット重視）</li>
             <li>業界別2〜3チームに分かれ「その業界のトップ」レベルの提案を制作</li>
           </ul>
         </div>
@@ -846,7 +846,7 @@
   <footer class="footer">
     <div class="footer-logo">Firework</div>
     <p>FY26 Q3 OffSite - 準備概要</p>
-    <p class="footer-updated">最終更新: 2026年7月6日 15:56</p>
+    <p class="footer-updated">最終更新: 2026年7月6日 16:10</p>
   </footer>
 
   <script>
