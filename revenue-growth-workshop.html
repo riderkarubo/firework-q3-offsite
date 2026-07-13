@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revenue Growthワークショップ 準備ページ｜Firework Japan Q3 OffSite</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="last-modified" content="2026-07-13T14:24:41+09:00">
+  <meta name="last-modified" content="2026-07-13T15:02:36+09:00">
   <meta name="theme-color" content="#111111">
   <!-- ===== OGP / Slack unfurl ===== -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Revenue Growthワークショップ 準備ページ｜Firework社内">
-  <meta property="og:description" content="Q3 OffSite(7/17) Part3。Claude×Plaudでの発言記録→AI整理→ネクストアクション化フローと当日の進行設計。">
+  <meta property="og:description" content="Q3 OffSite(7/17) Part3の議論サマリーとQ3ネクストアクションを格納するハコ。Claude×Plaudで当日の発言を整理して反映する。">
   <meta property="og:url" content="https://riderkarubo.github.io/firework-q3-offsite/revenue-growth-workshop.html">
   <meta property="og:site_name" content="Firework社内 / AIGC事業">
   <meta property="og:locale" content="ja_JP">
@@ -22,7 +22,7 @@
   -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Revenue Growthワークショップ 準備ページ｜Firework社内">
-  <meta name="twitter:description" content="Q3 OffSite(7/17) Part3。Claude×Plaudでの発言記録→AI整理→ネクストアクション化フローと当日の進行設計。">
+  <meta name="twitter:description" content="Q3 OffSite(7/17) Part3の議論サマリーとQ3ネクストアクションを格納するハコ。Claude×Plaudで当日の発言を整理して反映する。">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9A%80</text></svg>">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap');
@@ -107,17 +107,6 @@
     .info-card .v { font-size: 18px; font-weight: 700; color: #111111; }
     .info-card .sub { font-size: 13px; color: #666666; margin-top: 6px; }
 
-    /* ===== ROW STYLE (workflow steps / roadmap-like) ===== */
-    .row-list { display: flex; flex-direction: column; gap: 10px; }
-    .row-item {
-      display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: center;
-      padding: 20px 22px; background: #2d3748; color: #ffffff; border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(45, 55, 72, 0.25);
-    }
-    .row-num { font-size: 22px; font-weight: 900; color: #ff9a6b; font-variant-numeric: tabular-nums; }
-    .row-body b { font-size: 15.5px; font-weight: 700; display: block; margin-bottom: 3px; }
-    .row-body span { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,0.65); }
-
     /* ===== FORMAT EXAMPLE CARD ===== */
     .format-card { background: #ffffff; border-radius: 14px; padding: 26px 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 16px; }
     .format-card h4 { font-size: 13px; letter-spacing: 1px; color: #ff6b35; text-transform: uppercase; margin-bottom: 12px; }
@@ -143,23 +132,45 @@
     .caveat-list li { margin-bottom: 10px; }
     .caveat-list li:last-child { margin-bottom: 0; }
 
-    /* ===== NEXT ACTIONS ===== */
-    .action-list { display: flex; flex-direction: column; gap: 10px; }
-    .action-row {
-      display: grid; grid-template-columns: 1fr 110px; gap: 16px; align-items: center;
-      padding: 18px 22px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      border-left: 4px solid #d8d0c8;
+    /* ===== CATEGORY GROUPING（フィードバック反映） ===== */
+    .category-group { margin-bottom: 30px; }
+    .category-group:last-child { margin-bottom: 0; }
+    .category-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px; border-radius: 10px; margin-bottom: 14px;
     }
-    .action-row.status-done { border-left-color: #2f9e5f; }
-    .action-row.status-progress { border-left-color: #ff6b35; }
-    .action-row.status-open { border-left-color: #e63946; }
-    .action-main b { font-size: 15px; display: block; margin-bottom: 3px; }
-    .action-main span { font-size: 13px; color: #666666; }
-    .action-owner { font-size: 12.5px; color: #999; text-align: right; }
-    .status-pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 700; text-align: center; }
-    .status-done .status-pill { background: #e6f6ec; color: #2f9e5f; }
-    .status-progress .status-pill { background: #fff0e8; color: #ff6b35; }
-    .status-open .status-pill { background: #fdeaec; color: #e63946; }
+    .category-header .cat-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .category-header .cat-name { font-size: 15px; font-weight: 700; color: #111111; }
+    .category-header .cat-count { font-size: 12px; font-weight: 700; color: #666666; margin-left: auto; background: rgba(255,255,255,0.75); padding: 3px 12px; border-radius: 999px; }
+    .category-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+
+    /* ===== PENDING / PLACEHOLDER (本番前プレースホルダー) ===== */
+    .pending-banner {
+      background: #fff8ec; border: 1px dashed #e8b155; color: #8a5a00;
+      border-radius: 10px; padding: 14px 18px; font-size: 13.5px; margin-bottom: 22px;
+    }
+    .placeholder-card {
+      background: #fbfaf8; border: 1.5px dashed #cfc7ba; border-radius: 14px;
+      padding: 20px 24px; margin-bottom: 14px;
+    }
+    .placeholder-card .ph-tag {
+      display: inline-block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: #999999; background: #ececec; padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .placeholder-card .ph-row { font-size: 14.5px; color: #555555; margin-bottom: 6px; }
+    .placeholder-card .ph-row b { color: #333333; }
+    .placeholder-card .ph-row i { color: #999999; font-style: italic; }
+    .ph-note { font-size: 12.5px; color: #999999; margin: 4px 0 24px; }
+    .ph-subhead { color: #ff6b35; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin: 28px 0 12px; }
+    .placeholder-action-row {
+      background: #fbfaf8; border: 1.5px dashed #cfc7ba; border-radius: 12px;
+      padding: 18px 22px; margin-bottom: 12px;
+    }
+    .placeholder-action-row > div { font-size: 14.5px; color: #555555; margin-bottom: 6px; }
+    .placeholder-action-row b { color: #333333; }
+    .placeholder-action-row i { color: #999999; font-style: italic; }
+    .placeholder-action-row .ph-meta { display: flex; gap: 24px; margin-top: 8px; font-size: 13px; }
+    .placeholder-action-row .ph-meta b { color: #666666; }
 
     .divider { max-width: 900px; margin: 0 auto; height: 1px; background: linear-gradient(90deg, transparent, #d8d0c8, transparent); }
 
@@ -190,10 +201,10 @@
     <div class="brand">Firework<span class="em"> Japan</span></div>
     <div class="sub2">Revenue Growth WS 準備</div>
     <a href="#overview"><span class="num">01</span>概要</a>
-    <a href="#workflow"><span class="num">02</span>Claude×Plaud</a>
-    <a href="#format"><span class="num">03</span>発言フォーマット</a>
-    <a href="#template"><span class="num">04</span>Plaudテンプレート</a>
-    <a href="#actions"><span class="num">05</span>ネクストアクション</a>
+    <a href="#format"><span class="num">02</span>発言フォーマット</a>
+    <a href="#template"><span class="num">03</span>Plaudテンプレート</a>
+    <a href="#summary"><span class="num">04</span>議論サマリー</a>
+    <a href="#actions"><span class="num">05</span>Q3アクション</a>
     <div class="back"><a href="./index.html">&#8592; Q3 OffSite 全体に戻る</a></div>
     <div class="foot">2026.07.17 (Fri)<br>13:00-15:30 (Part 3)</div>
   </nav>
@@ -203,7 +214,7 @@
     <div class="hero-content">
       <div class="hero-logo">Firework Japan / Q3 OffSite Part 3</div>
       <h1 class="hero-title">Revenue Growth<span>ワークショップ</span></h1>
-      <p class="hero-subtitle">準備ページ ― Claude×Plaudによる発言記録→整理→アクション化フロー</p>
+      <p class="hero-subtitle">当日の議論をClaude×Plaudで整理し、サマリーとQ3アクションを格納するハコ</p>
       <div class="hero-meta">
         <div class="meta-item"><div class="meta-icon">&#128197;</div><div><strong>2026.07.17 Fri</strong></div></div>
         <div class="meta-item"><div class="meta-icon">&#128336;</div><div><strong>13:00-15:30</strong></div></div>
@@ -239,35 +250,7 @@
       <div class="info-card">
         <div class="k">参加想定</div>
         <div class="v">9〜10名</div>
-        <div class="sub">一人あたり発表5分＋質疑5分（要時間再確認・下記ネクストアクション参照）</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- WORKFLOW -->
-  <section class="section" id="workflow">
-    <div class="section-label">7/13 Meeting</div>
-    <h2 class="section-title">Claude×Plaud ワークフロー</h2>
-    <p class="section-desc">7/13の社内ミーティングで合意した、当日の発言をそのままネクストアクションに変換するための4ステップ。事前準備は不要で、発言録音→AI整理の一方向フローで進行する。</p>
-
-    <div class="row-list">
-      <div class="row-item">
-        <div class="row-num">01</div>
-        <div class="row-body"><b>Claudeで出力用HTML箱（テンプレ）を事前作成</b><span>本ページがそれに該当。当日はこのページの構成に沿って整理結果を流し込む</span></div>
-      </div>
-      <div class="row-item">
-        <div class="row-num">02</div>
-        <div class="row-body"><b>各参加者がPlaudで音声録音</b><span>スマホアプリで録音→自動でアプリ内へ転送→共有リンクで送付</span></div>
-      </div>
-      <div class="row-item">
-        <div class="row-num">03</div>
-        <div class="row-body"><b>録音データをノート化してClaudeプロジェクトへインポート</b><span>PCのClaude画面へ直接ではなく、Plaudアプリ側でノート化してから読み込む</span></div>
-      </div>
-      <div class="row-item">
-        <div class="row-num">04</div>
-        <div class="row-body"><b>Claudeが情報を整理し、アクションを集約してアウトプット</b><span>発言者ごとの論点整理＋ネクストアクションの一覧化</span></div>
+        <div class="sub">一人あたり発表5分＋質疑5分（時間配分は要確認・Plaudテンプレート項目参照）</div>
       </div>
     </div>
   </section>
@@ -346,56 +329,111 @@
 
     <ul class="caveat-list">
       <li><b>話者ラベルの精度：</b>Plaudの話者分離は「話者A／話者B」等の仮ラベルになりがちで実名には自動変換されない。発言冒頭で名乗ってもらう運用にすると後工程の実名置換が楽になる。</li>
-      <li><b>Plaudアカウント運用が未確定：</b>参加者各自のPlaudを使うか、Issyのアカウントを借用するかが7/13時点で未決定（下記ネクストアクション参照）。</li>
       <li><b>時間配分の要確認：</b>発表5分＋質疑5分×9〜10名＝90〜100分だが、前半の割当は70分。時間超過の可能性があるため本番前に確認したほうがよい。</li>
     </ul>
   </section>
 
   <div class="divider"></div>
 
-  <!-- NEXT ACTIONS -->
-  <section class="section" id="actions">
-    <div class="section-label">Q3 Next Actions</div>
-    <h2 class="section-title">ネクストアクション</h2>
-    <p class="section-desc">7/13ミーティングの議事録に基づく現状。「未定」はミーティング内で結論が出ていない論点。</p>
+  <!-- DISCUSSION SUMMARY (本番後にここが埋まる) -->
+  <section class="section" id="summary">
+    <div class="section-label">Workshop Output ― 本番後に反映</div>
+    <h2 class="section-title">議論サマリー（前半：なぜARRが伸びないか）</h2>
+    <p class="section-desc">2026.07.17の前半（発散パート）でPlaudに録音された発言を、発言フォーマットに沿ってClaudeが整理し、テーマ（カテゴリ）ごとにグループ化してここに反映する。以下は本番前のプレースホルダー。</p>
 
-    <div class="action-list">
-      <div class="action-row status-done">
-        <div class="action-main"><b>ワークショップ用Plaudカスタムテンプレート作成</b><span>テーマ＋なぜなら／質疑応答を抽出する専用テンプレート</span></div>
-        <div class="action-owner"><span class="status-pill">完了 7/13</span></div>
+    <div class="pending-banner">&#9203; 本番前のプレースホルダーです。ワークショップ終了後、Plaud→Claudeでの整理結果を下記の型式でこの位置に反映します。カテゴリ名・人数は当日の発言内容次第で変わります。</div>
+
+    <div class="category-group">
+      <div class="category-header" style="background:#f0f0f0;">
+        <span class="cat-dot" style="background:#999999;"></span>
+        <span class="cat-name">［カテゴリ名は当日決まる］</span>
+        <span class="cat-count">n名</span>
       </div>
-      <div class="action-row status-progress">
-        <div class="action-main"><b>出力用HTML箱（本ページ）の作成</b><span>Claude×Plaudワークフロー・ネクストアクションを反映し初版作成中</span></div>
-        <div class="action-owner">Issy<br><span class="status-pill">進行中</span></div>
+      <div class="category-cards">
+        <div class="placeholder-card">
+          <div class="ph-tag">発言者未定</div>
+          <div class="ph-row"><b>要約：</b><i>［ワークショップ後に記載］</i></div>
+          <div class="ph-row"><b>なぜなら：</b><i>［ワークショップ後に記載］</i></div>
+        </div>
+        <div class="placeholder-card">
+          <div class="ph-tag">発言者未定</div>
+          <div class="ph-row"><b>要約：</b><i>［ワークショップ後に記載］</i></div>
+          <div class="ph-row"><b>なぜなら：</b><i>［ワークショップ後に記載］</i></div>
+        </div>
       </div>
-      <div class="action-row status-progress">
-        <div class="action-main"><b>Claude＋Plaud連携フローのサンプルプロジェクト作成・共有</b><span>7/13議事録の次のアクション。作成後Speaker 2に共有予定</span></div>
-        <div class="action-owner">Issy<br><span class="status-pill">進行中</span></div>
+    </div>
+
+    <div class="category-group">
+      <div class="category-header" style="background:#f0f0f0;">
+        <span class="cat-dot" style="background:#999999;"></span>
+        <span class="cat-name">［カテゴリ名は当日決まる］</span>
+        <span class="cat-count">n名</span>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>同様のプロジェクトを試作</b><span>7/13議事録の次のアクション</span></div>
-        <div class="action-owner">Speaker 2<br><span class="status-pill">未着手</span></div>
+      <div class="category-cards">
+        <div class="placeholder-card">
+          <div class="ph-tag">発言者未定</div>
+          <div class="ph-row"><b>要約：</b><i>［ワークショップ後に記載］</i></div>
+          <div class="ph-row"><b>なぜなら：</b><i>［ワークショップ後に記載］</i></div>
+        </div>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>7/13ミーティングの議事録を送付</b><span>本ページの元になった議事録の正式版</span></div>
-        <div class="action-owner">Speaker 2<br><span class="status-pill">未着手</span></div>
+    </div>
+
+    <p class="ph-note">※ カテゴリ数・各カテゴリの人数は当日の発言内容に応じて決まる（参考：レイアウト検証用サンプルを別途共有済み）</p>
+
+    <h4 class="ph-subhead">質疑応答サマリー</h4>
+    <div class="placeholder-card">
+      <div class="ph-row">Q：<i>［本番の質問内容がここに入ります］</i></div>
+      <div class="ph-row">A：<i>［本番の回答内容がここに入ります］</i></div>
+    </div>
+    <p class="ph-note">※ 件数は当日の質疑に応じて増減</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Q3 NEXT ACTIONS (本番後にここが埋まる) -->
+  <section class="section" id="actions">
+    <div class="section-label">Workshop Output ― 本番後に反映</div>
+    <h2 class="section-title">Q3ネクストアクション（後半の決定事項）</h2>
+    <p class="section-desc">前半の議論を受けて後半（収束パート）で決まった、Q3で実行する対策・アクション。議論サマリーと同じカテゴリでグループ化して反映する。以下は本番前のプレースホルダー。</p>
+
+    <div class="pending-banner">&#9203; 本番前のプレースホルダーです。後半の議論結果をもとに対策・背景・担当・期限をここに反映します。カテゴリは議論サマリーと対応させます。</div>
+
+    <div class="category-group">
+      <div class="category-header" style="background:#f0f0f0;">
+        <span class="cat-dot" style="background:#999999;"></span>
+        <span class="cat-name">［カテゴリ名は当日決まる］</span>
+        <span class="cat-count">n件</span>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>Plaudアカウント運用ルールの確定</b><span>参加者各自のPlaudを使うか、Issyのアカウントを借用するか未決定</span></div>
-        <div class="action-owner">未定<br><span class="status-pill">要確定</span></div>
+      <div class="placeholder-action-row">
+        <div><b>対策・アクション：</b><i>［本番で決定した内容をここに記載］</i></div>
+        <div><b>背景：</b><i>［前半のどの論点を受けた対策かをここに記載］</i></div>
+        <div class="ph-meta"><span><b>担当：</b>未定</span><span><b>期限：</b>未定</span></div>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>ワークショップの確定人数・参加者リストの共有</b><span>9〜10名という想定はあるが、確定人数・対象者の詳細が未共有</span></div>
-        <div class="action-owner">未定<br><span class="status-pill">要確定</span></div>
+    </div>
+
+    <div class="category-group">
+      <div class="category-header" style="background:#f0f0f0;">
+        <span class="cat-dot" style="background:#999999;"></span>
+        <span class="cat-name">［カテゴリ名は当日決まる］</span>
+        <span class="cat-count">n件</span>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>発言テンプレートの配布フロー確定</b><span>「テーマ＋なぜなら」の方向性は合意済みだが、参加者への配布・周知方法が未定</span></div>
-        <div class="action-owner">未定<br><span class="status-pill">要確定</span></div>
+      <div class="placeholder-action-row">
+        <div><b>対策・アクション：</b><i>［本番で決定した内容をここに記載］</i></div>
+        <div><b>背景：</b><i>［前半のどの論点を受けた対策かをここに記載］</i></div>
+        <div class="ph-meta"><span><b>担当：</b>未定</span><span><b>期限：</b>未定</span></div>
       </div>
-      <div class="action-row status-open">
-        <div class="action-main"><b>発表時間配分の再確認</b><span>5分＋5分×9〜10名＝90〜100分だが前半の割当は70分。本ページ作成時に気づいた差分</span></div>
-        <div class="action-owner">未定<br><span class="status-pill">要確認</span></div>
+      <div class="placeholder-action-row">
+        <div><b>対策・アクション：</b><i>［本番で決定した内容をここに記載］</i></div>
+        <div><b>背景：</b><i>［前半のどの論点を受けた対策かをここに記載］</i></div>
+        <div class="ph-meta"><span><b>担当：</b>未定</span><span><b>期限：</b>未定</span></div>
       </div>
+    </div>
+
+    <p class="ph-note">※ カテゴリ・件数は当日の決定内容に応じて増減</p>
+
+    <h4 class="ph-subhead">全体を通じたパターン（任意）</h4>
+    <div class="placeholder-card">
+      <div class="ph-row"><i>複数人が言及していた共通キーワード・論点があれば、根拠となる発言者名付きでここに記載</i></div>
     </div>
   </section>
 
@@ -403,7 +441,7 @@
   <footer class="footer">
     <div class="footer-logo">Firework</div>
     <p>Revenue Growthワークショップ 準備ページ</p>
-    <p class="footer-updated">最終更新: 2026年7月13日 14:24</p>
+    <p class="footer-updated">最終更新: 2026年7月13日 15:02</p>
   </footer>
 
   <script>
